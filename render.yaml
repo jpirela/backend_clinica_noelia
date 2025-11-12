@@ -27,10 +27,10 @@ services:
     plan: starter
     image:
       url: mysql:8.0
-    dockerCommand: --default-authentication-plugin=mysql_native_password
+    command: ["--default-authentication-plugin=mysql_native_password"]
     envVars:
       - key: MYSQL_ROOT_PASSWORD
-        sync: false   # define como Secret en Render (mismo valor que DB_PASSWORD)
+        sync: false   # mismo valor que DB_PASSWORD
       - key: MYSQL_DATABASE
         value: noelia
     disk:
