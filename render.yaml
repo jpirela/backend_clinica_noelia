@@ -25,7 +25,8 @@ services:
     name: clinic-mysql
     env: docker
     plan: starter
-    image: mysql:8.0
+    image:
+      url: mysql:8.0
     dockerCommand: --default-authentication-plugin=mysql_native_password
     envVars:
       - key: MYSQL_ROOT_PASSWORD
