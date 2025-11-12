@@ -27,7 +27,7 @@ services:
     plan: starter
     image:
       url: mysql:8.0
-    command: ["--default-authentication-plugin=mysql_native_password"]
+    dockerCommand: --default-authentication-plugin=mysql_native_password
     envVars:
       - key: MYSQL_ROOT_PASSWORD
         sync: false   # mismo valor que DB_PASSWORD
