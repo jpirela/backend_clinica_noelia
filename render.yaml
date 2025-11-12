@@ -20,7 +20,7 @@ services:
       - key: DB_PASSWORD
         sync: false
 
-  - type: private_service
+  - type: pserv
     name: clinic-mysql
     plan: starter
     image:
