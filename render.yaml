@@ -24,10 +24,12 @@ services:
     name: clinic-mysql
     env: docker
     plan: starter
-    dockerImage: mysql:8.0
+    rootDir: ./mysql
+    dockerfilePath: ./mysql/Dockerfile
+    dockerContext: ./mysql
     envVars:
       - key: MYSQL_ROOT_PASSWORD
-        sync: false
+        sync: false   # mismo valor que DB_PASSWORD
       - key: MYSQL_DATABASE
         value: noelia
     disk:
