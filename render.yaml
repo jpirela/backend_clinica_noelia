@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: clinic-backend
+    env: docker
+    plan: starter
+    rootDir: .
+    dockerfilePath: Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: DB_HOST
+        value: clinic-mysql
+      - key: DB_PORT
+        value: 3306
+      - key: DB_NAME
+        value: noelia
+      - key: DB_USER
+        value: root
+      - key: DB_PASSWORD
+        sync: false   # define como Secret en Render tras crear el Blueprint
+
+  - type: pserv
+    name: clinic-mysql
+    env: docker
+    plan: starter
+    image: mysql:8.0
+    dockerCommand: --default-authentication-plugin=mysql_native_password
+    envVars:
+      - key: MYSQL_ROOT_PASSWORD
+        sync: false   # define como Secret en Render (mismo valor que DB_PASSWORD)
+      - key: MYSQL_DATABASE
+        value: noelia
+    disk:
+      name: mysqldata
+      mountPath: /var/lib/mysql
+      sizeGB: 20
