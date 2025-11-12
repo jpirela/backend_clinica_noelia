@@ -22,9 +22,9 @@ services:
 
   - type: pserv
     name: clinic-mysql
+    env: docker
     plan: starter
-    image:
-      url: mysql:8.0
+    dockerImage: mysql:8.0
     envVars:
       - key: MYSQL_ROOT_PASSWORD
         sync: false
