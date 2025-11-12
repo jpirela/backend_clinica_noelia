@@ -25,12 +25,11 @@ services:
     name: clinic-mysql
     env: docker
     plan: starter
-    dockerfilePath: docker/mysql.Dockerfile
-    dockerContext: .
+    image: mysql:8.0
     dockerCommand: --default-authentication-plugin=mysql_native_password
     envVars:
       - key: MYSQL_ROOT_PASSWORD
-        sync: false
+        sync: false   # define como Secret en Render (mismo valor que DB_PASSWORD)
       - key: MYSQL_DATABASE
         value: noelia
     disk:
